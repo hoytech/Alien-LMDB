@@ -1,0 +1,12 @@
+Makefile
+Makefile.old
+MYMETA.*
+META.*
+blib/
+pm_to_blib
+MANIFEST.bak
+Alien-LMDB-*.tar.gz
+Build
+_build/
+_share/
+_alien/
