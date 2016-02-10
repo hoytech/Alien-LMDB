@@ -21,7 +21,7 @@ Alien::LMDB - Build and install the LMDB embedded database
     my $lmdb = Alien::LMDB->new;
 
     my $cflags = $lmdb->cflags;
-    "-I/usr/local/share/perl/5.20.2/auto/share/dist/Alien-LMDB/include"
+    ## "-I/usr/local/share/perl/5.20.2/auto/share/dist/Alien-LMDB/include"
 
     my $libs = $lmdb->libs;
     "-L/usr/local/share/perl/5.20.2/auto/share/dist/Alien-LMDB/lib -llmdb"
@@ -30,6 +30,8 @@ Alien::LMDB - Build and install the LMDB embedded database
     system("$mdb_stat_binary /path/to/db");
 
 The above methods are inherited from L<Alien::Base>.
+
+If C<pkg-config --modversion lmdb> works on your system, L<Alien::Base> will attempt to use the system-installed lmdb. Otherwise it will use a bundled lmdb tarball.
 
 
 =head1 DESCRIPTION
@@ -45,6 +47,8 @@ L<LMDB_File>
 L<Official LMDB site|http://symas.com/mdb/>
 
 L<github mirror of LMDB repo|https://github.com/LMDB/lmdb>
+
+L<Alien::Base>
 
 =head1 AUTHOR
 
