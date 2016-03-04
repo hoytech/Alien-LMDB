@@ -9,7 +9,7 @@ my $builder = Alien::Base::ModuleBuild->new(
   dist_abstract => 'Build and install the LMDB embedded database',
   license => 'openldap',
   configure_requires => {
-    'Alien::Base' => '0.003',
+    'Alien::Base::ModuleBuild' => 0,
     'Module::Build' => '0.38',
   },
   requires => {
