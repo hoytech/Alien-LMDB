@@ -24,7 +24,7 @@ Alien::LMDB - Build and install the LMDB embedded database
     ## "-I/usr/local/share/perl/5.20.2/auto/share/dist/Alien-LMDB/include"
 
     my $libs = $lmdb->libs;
-    "-L/usr/local/share/perl/5.20.2/auto/share/dist/Alien-LMDB/lib -llmdb"
+    ## "-L/usr/local/share/perl/5.20.2/auto/share/dist/Alien-LMDB/lib -llmdb"
 
     my $mdb_stat_binary = $lmdb->bin_dir . '/mdb_stat';
     system("$mdb_stat_binary /path/to/db");
