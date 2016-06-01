@@ -2,6 +2,11 @@ use strict;
 use warnings;
 
 use Alien::Base::ModuleBuild;
+use Alien::gmake;
+use Config;
+
+
+my $gmake = Alien::gmake->exe;
 
 
 my $builder = Alien::Base::ModuleBuild->new(
@@ -10,6 +15,7 @@ my $builder = Alien::Base::ModuleBuild->new(
   license => 'openldap',
   configure_requires => {
     'Alien::Base::ModuleBuild' => 0,
+    'Alien::gmake' => 0,
     'Module::Build' => '0.38',
   },
   requires => {
@@ -33,13 +39,13 @@ my $builder = Alien::Base::ModuleBuild->new(
     pattern  => qr/^LMDB_([\d.]+)\.tar\.gz$/,
   },
   alien_build_commands => [
-    'make -C libraries/liblmdb/',
+    "$gmake -C libraries/liblmdb/ CC=$Config{cc}",
   ],
   alien_test_commands => [
-    'make -C libraries/liblmdb/ test >/dev/null',
+    "$gmake -C libraries/liblmdb/ CC=$Config{cc} test >/dev/null",
   ],
   alien_install_commands => [
-    'make -C libraries/liblmdb/ install prefix=%s',
+    "$gmake -C libraries/liblmdb/ CC=$Config{cc} install prefix=%s",
   ],
 );
 
