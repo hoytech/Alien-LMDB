@@ -1,3 +1,6 @@
+0.102  2016-06-01
+  * Attempt to support BSD systems
+
 0.101  2016-03-04
   * Include META.* in manifest
 
