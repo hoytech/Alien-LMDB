@@ -9,6 +9,7 @@ my $builder = Alien::Base::ModuleBuild->new(
   module_name => 'Alien::LMDB',
   dist_abstract => 'Build and install the LMDB embedded database',
   license => 'openldap',
+  alien_msys => 1,
   alien_bin_requires => {
     'Alien::gmake' => 0,
   },
@@ -40,7 +41,7 @@ my $builder = Alien::Base::ModuleBuild->new(
     "%{gmake} -C libraries/liblmdb/ CC=$Config{cc}",
   ],
   alien_test_commands => [
-    "%{gmake} -C libraries/liblmdb/ CC=$Config{cc} test >/dev/null",
+    "%{gmake} -C libraries/liblmdb/ CC=$Config{cc} test > @{[ $^O eq 'MSWin32' ? 'NUL' : '/dev/null' ]}",
   ],
   alien_install_commands => [
     "%{gmake} -C libraries/liblmdb/ CC=$Config{cc} install prefix=%s",
