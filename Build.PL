@@ -2,20 +2,18 @@ use strict;
 use warnings;
 
 use Alien::Base::ModuleBuild;
-use Alien::gmake;
 use Config;
-
-
-my $gmake = Alien::gmake->exe;
 
 
 my $builder = Alien::Base::ModuleBuild->new(
   module_name => 'Alien::LMDB',
   dist_abstract => 'Build and install the LMDB embedded database',
   license => 'openldap',
+  alien_bin_requires => {
+    'Alien::gmake' => 0,
+  },
   configure_requires => {
     'Alien::Base::ModuleBuild' => 0,
-    'Alien::gmake' => 0,
     'Module::Build' => '0.38',
   },
   requires => {
@@ -39,13 +37,13 @@ my $builder = Alien::Base::ModuleBuild->new(
     pattern  => qr/^LMDB_([\d.]+)\.tar\.gz$/,
   },
   alien_build_commands => [
-    "$gmake -C libraries/liblmdb/ CC=$Config{cc}",
+    "%{gmake} -C libraries/liblmdb/ CC=$Config{cc}",
   ],
   alien_test_commands => [
-    "$gmake -C libraries/liblmdb/ CC=$Config{cc} test >/dev/null",
+    "%{gmake} -C libraries/liblmdb/ CC=$Config{cc} test >/dev/null",
   ],
   alien_install_commands => [
-    "$gmake -C libraries/liblmdb/ CC=$Config{cc} install prefix=%s",
+    "%{gmake} -C libraries/liblmdb/ CC=$Config{cc} install prefix=%s",
   ],
 );
 
