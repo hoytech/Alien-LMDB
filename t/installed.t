@@ -11,4 +11,4 @@ my @libs = shellwords( Alien::LMDB->libs );
 ok(grep { /^-llmdb$/ } @libs, 'found -llmdb in libs');
 
 ok(exists($Alien::LMDB::AlienLoaded{-llmdb}), 'AlienLoaded hash populated with -llmdb');
-ok(-e $Alien::LMDB::AlienLoaded{-llmdb}, 'AlienLoaded hash of -llmdb points to existant file');
+ok(-e $Alien::LMDB::AlienLoaded{-llmdb}, 'AlienLoaded hash of -llmdb points to existent file');
