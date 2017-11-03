@@ -6,3 +6,4 @@ MANIFEST			This list of files
 META.json
 META.yml
 t/installed.t
+t/style-trailing-space.t
