@@ -35,7 +35,7 @@ my $builder = Alien::Base::ModuleBuild->new(
   alien_repository => {
     protocol => 'local',
     location => 'inc',
-    pattern  => qr/^LMDB_([\d.]+)\.tar\.gz$/,
+    pattern  => qr/^lmdb-LMDB_([\d.]+)\.tar\.gz$/,
   },
   alien_build_commands => [
     "%{gmake} -C libraries/liblmdb/ CC=$Config{cc}",
